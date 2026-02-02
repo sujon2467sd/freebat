@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freebatss | Premium Gaming Entertainment</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-blue: #0a1d3e;
+            --accent-blue: #1e40af;
+            --electric-blue: #3b82f6;
+            --neon-cyan: #06b6d4;
+            --dark-bg: #0a0a0f;
+            --card-dark: #121826;
+            --card-border: #1e293b;
+            --light-text: #f8fafc;
+            --muted-text: #94a3b8;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(30, 64, 175, 0.15) 0%, transparent 55%),
+                radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 55%);
+        }
+        
+        .container-custom {
+            max-width: 1650px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .header-section {
+            background: linear-gradient(180deg, rgba(10, 29, 62, 0.98) 0%, rgba(10, 10, 15, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(30, 64, 175, 0.3);
+            padding: 1.5rem 0;
+            position: relative;
+        }
+        
+        .header-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--electric-blue) 0%, var(--neon-cyan) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+        }
+        
+        .logo-subtitle {
+            font-size: 1.1rem;
+            color: var(--muted-text);
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .main-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #f8fafc, #cbd5e1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--muted-text);
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Hero Features */
+        .hero-section {
+            padding: 4rem 0;
+        }
+        
+        .feature-card {
+            background: linear-gradient(145deg, rgba(18, 24, 38, 0.9), rgba(30, 41, 59, 0.7));
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(6, 182, 212, 0.05));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(59, 130, 246, 0.2),
+                0 0 30px rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--light-text);
+        }
+        
+        .feature-desc {
+            color: var(--muted-text);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Warning Banner */
+        .warning-banner {
+            background: linear-gradient(90deg, rgba(245, 158, 11, 0.15), rgba(220, 38, 38, 0.15));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 12px;
+            padding: 1.2rem 2rem;
+            margin: 2.5rem auto 3rem;
+            max-width: 900px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .warning-icon {
+            font-size: 1.8rem;
+            color: var(--warning-orange);
+        }
+        
+        /* Action Button */
+        .action-section {
+            padding: 2rem 0 4rem;
+        }
+        
+        .action-button {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--electric-blue) 100%);
+            border: none;
+            padding: 1.5rem 4rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 14px;
+            color: white;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 10px 30px rgba(30, 64, 175, 0.3),
+                0 0 0 1px rgba(59, 130, 246, 0.2);
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .action-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 20px 50px rgba(30, 64, 175, 0.5),
+                0 0 0 1px rgba(59, 130, 246, 0.4),
+                0 0 40px rgba(59, 130, 246, 0.3);
+        }
+        
+        .action-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Trust Section */
+        .trust-section {
+            padding: 4rem 0;
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.7) 0%, rgba(10, 29, 62, 0.5) 100%);
+            border-radius: 24px;
+            margin: 2rem 0;
+            border: 1px solid rgba(30, 41, 59, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .trust-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(to right, var(--electric-blue), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--neon-cyan));
+            border-radius: 2px;
+        }
+        
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .trust-image-container {
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--card-border);
+        }
+        
+        .trust-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        
+        .trust-image-container:hover .trust-image {
+            transform: scale(1.05);
+        }
+        
+        .trust-point {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(30, 41, 59, 0.7);
+        }
+        
+        .trust-point:last-child {
+            border-bottom: none;
+        }
+        
+        .trust-icon {
+            font-size: 1.5rem;
+            color: var(--success-green);
+            margin-right: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        .contact-card {
+            background: linear-gradient(145deg, rgba(18, 24, 38, 0.9), rgba(30, 41, 59, 0.7));
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 2.5rem 2rem;
+            height: 100%;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(59, 130, 246, 0.2),
+                0 0 40px rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--success-green), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .contact-info {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            color: var(--light-text);
+        }
+        
+        /* Footer */
+        .footer-section {
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.95) 0%, rgba(10, 29, 62, 0.9) 100%);
+            padding: 3rem 0 2rem;
+            border-top: 1px solid rgba(30, 64, 175, 0.3);
+            margin-top: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--electric-blue) 0%, var(--neon-cyan) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--muted-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--electric-blue);
+        }
+        
+        .copyright {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(30, 41, 59, 0.5);
+            margin-top: 2rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            .container-custom {
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .action-button {
+                padding: 1.2rem 2rem;
+                font-size: 1.2rem;
+            }
+            
+            .feature-card, .contact-card {
+                padding: 1.5rem 1rem;
+            }
+        }
+        
+        /* Animation for elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <!-- Header Section -->
+    <header class="header-section">
+        <div class="container-custom">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10 col-md-12">
+                    <div class="logo animate-fade-in">Freebatss</div>
+                    <div class="logo-subtitle animate-fade-in delay-1">Entertainment Platform</div>
+                    <h1 class="main-title animate-fade-in delay-2 mt-4">Welcome to Freebatss Entertainment Platform</h1>
+                    <p class="subtitle animate-fade-in delay-3">Experience Unparalleled Gaming Performance with Cutting-Edge Security and Intuitive Design</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container-custom">
+            <!-- Warning Banner -->
+            <div class="warning-banner animate-fade-in">
+                <i class="bi bi-exclamation-triangle-fill warning-icon"></i>
+                <div class="warning-text">
+                    <strong class="d-block">18+ Only | Responsible Gaming Notice</strong>
+                    <small class="d-block mt-1">This platform is intended for adult audiences only. Please gamble responsibly.</small>
+                </div>
+            </div>
+            
+            <!-- Features -->
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card animate-fade-in">
+                        <i class="bi bi-shield-check feature-icon"></i>
+                        <h4 class="feature-title">Military-Grade Security</h4>
+                        <p class="feature-desc">Advanced encryption protocols ensuring your data and transactions remain completely secure and protected at all times.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card animate-fade-in delay-1">
+                        <i class="bi bi-headset feature-icon"></i>
+                        <h4 class="feature-title">24/7 Premium Support</h4>
+                        <p class="feature-desc">Round-the-clock dedicated support team ready to assist with any inquiries or technical issues you may encounter.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card animate-fade-in delay-2">
+                        <i class="bi bi-lightning-charge feature-icon"></i>
+                        <h4 class="feature-title">Ultra-Low Latency</h4>
+                        <p class="feature-desc">Optimized global server network delivering seamless, real-time gameplay with minimal latency for competitive advantage.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card animate-fade-in delay-3">
+                        <i class="bi bi-phone feature-icon"></i>
+                        <h4 class="feature-title">Cross-Platform Compatibility</h4>
+                        <p class="feature-desc">Fully responsive design allowing uninterrupted gaming experiences across desktop, tablet, and mobile devices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Button Section -->
+    <section class="action-section">
+        <div class="container-custom">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <button class="action-button animate-fade-in">
+                        <i class="bi bi-arrow-right-circle me-2"></i> ACCESS PREMIUM PLATFORM
+                    </button>
+                    <p class="text-center mt-3 text-muted">Click to enter our secure gaming environment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container-custom">
+            <h2 class="section-title text-center">Enterprise-Grade Trust & Security</h2>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="trust-image-container">
+                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Secure Gaming Infrastructure" class="trust-image">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4" style="color: var(--light-text); font-weight: 700;">Our Commitment to Excellence</h3>
+                    <p class="mb-4" style="color: var(--muted-text); line-height: 1.7;">At Freebatss, we've established industry-leading standards for security, fairness, and user protection. Our platform undergoes regular independent audits to ensure compliance with international regulatory requirements.</p>
+                    
+                    <div class="trust-points">
+                        <div class="trust-point d-flex align-items-start">
+                            <i class="bi bi-shield-lock trust-icon"></i>
+                            <div>
+                                <h5 style="color: var(--light-text);">Advanced Fraud Prevention</h5>
+                                <p class="mb-0" style="color: var(--muted-text);">Multi-layered security systems with real-time monitoring to detect and prevent fraudulent activities.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="trust-point d-flex align-items-start">
+                            <i class="bi bi-award trust-icon"></i>
+                            <div>
+                                <h5 style="color: var(--light-text);">Licensed & Regulated</h5>
+                                <p class="mb-0" style="color: var(--muted-text);">Fully licensed under international gaming authorities with transparent operational practices.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="trust-point d-flex align-items-start">
+                            <i class="bi bi-graph-up trust-icon"></i>
+                            <div>
+                                <h5 style="color: var(--light-text);">Provably Fair Technology</h5>
+                                <p class="mb-0" style="color: var(--muted-text);">Blockchain-verified fairness algorithms allowing players to independently verify game outcomes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="trust-point d-flex align-items-start">
+                            <i class="bi bi-person-check trust-icon"></i>
+                            <div>
+                                <h5 style="color: var(--light-text);">Responsible Gaming Framework</h5>
+                                <p class="mb-0" style="color: var(--muted-text);">Comprehensive tools including deposit limits, cooling-off periods, and self-exclusion options.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container-custom">
+            <h2 class="section-title text-center">Dedicated Support Channels</h2>
+            <p class="text-center mb-5" style="color: var(--muted-text); max-width: 800px; margin: 0 auto 3rem;">Our professional support team is available through multiple channels to ensure prompt resolution of any inquiries.</p>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-card animate-fade-in">
+                        <i class="bi bi-headset contact-icon"></i>
+                        <h4 class="mb-3">Premium Support Center</h4>
+                        <p class="mb-3" style="color: var(--muted-text);">24/7 multilingual support with average response time under 3 minutes</p>
+                        <div class="contact-info">1-888-FREEBATSS</div>
+                        <small style="color: var(--muted-text);">Toll-free international number</small>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-card animate-fade-in delay-1">
+                        <i class="bi bi-whatsapp contact-icon"></i>
+                        <h4 class="mb-3">Instant WhatsApp Support</h4>
+                        <p class="mb-3" style="color: var(--muted-text);">Direct messaging with support agents for immediate assistance</p>
+                        <div class="contact-info">+1 (555) 867-5309</div>
+                        <small style="color: var(--muted-text);">Available 24/7 with verified business account</small>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mx-auto">
+                    <div class="contact-card animate-fade-in delay-2">
+                        <i class="bi bi-envelope-paper contact-icon"></i>
+                        <h4 class="mb-3">Priority Email Support</h4>
+                        <p class="mb-3" style="color: var(--muted-text);">Detailed inquiries addressed by our specialized support teams</p>
+                        <div class="contact-info">support@freebatss.com</div>
+                        <small style="color: var(--muted-text);">Guaranteed response within 1 hour</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="container-custom">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="footer-logo">Freebatss</div>
+                    <p class="mb-4" style="color: var(--muted-text); max-width: 600px; margin: 0 auto;">The premier destination for sophisticated gaming entertainment, combining cutting-edge technology with uncompromising security standards.</p>
+                    
+                    <div class="footer-links d-flex flex-wrap justify-content-center gap-4 mb-4">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Responsible Gaming</a>
+                        <a href="#">Fair Gaming Policy</a>
+                        <a href="#">AML Policy</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                    
+                    <div class="copyright">
+                        <p class="mb-2">© 2023 Freebatss Entertainment Platform. All rights reserved.</p>
+                        <p class="mb-0">This service is intended for adult audiences (18+). Gambling can be addictive. Please play responsibly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Enhanced button interaction
+        const actionButton = document.querySelector('.action-button');
+        actionButton.addEventListener('click', function() {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size/2;
+            const y = event.clientY - rect.top - size/2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.7);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                width: ${size}px;
+                height: ${size}px;
+                top: ${y}px;
+                left: ${x}px;
+                pointer-events: none;
+            `;
+            
+            this.appendChild(ripple);
+            
+            // Remove ripple after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Show access message
+            setTimeout(() => {
+                alert('Accessing Freebatss Secure Gaming Platform...\n\nYou are being redirected to our premium gaming environment.');
+            }, 300);
+        });
+        
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all feature cards and contact cards
+        document.querySelectorAll('.feature-card, .contact-card').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    </script>
+</body>
+</html>
